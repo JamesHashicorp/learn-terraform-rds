@@ -16,7 +16,7 @@ module "vpc" {
   enable_dns_support   = true
 }
 
-resource "aws_db_subnet_group" var.project_name {
+resource "aws_db_subnet_group" "var.project_name" {
   name       = var.project_name
   subnet_ids = module.vpc.public_subnets
 
