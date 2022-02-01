@@ -8,7 +8,7 @@ module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "2.77.0"
 
-  name                 = $project_name
+  name                 = var.project_name
   cidr                 = "10.0.0.0/16"
   azs                  = data.aws_availability_zones.available.names
   public_subnets       = ["10.0.4.0/24", "10.0.5.0/24", "10.0.6.0/24"]
@@ -16,12 +16,12 @@ module "vpc" {
   enable_dns_support   = true
 }
 
-resource "aws_db_subnet_group" $project_name {
-  name       = $project_name
+resource "aws_db_subnet_group" var.project_name {
+  name       = var.project_name
   subnet_ids = module.vpc.public_subnets
 
   tags = {
-    Name = $project_name
+    Name = var.project_name
   }
 }
 
@@ -48,8 +48,8 @@ resource "aws_security_group" "rds" {
   }
 }
 
-resource "aws_db_parameter_group" $project_name {
-  name   = $project_name
+resource "aws_db_parameter_group" var.project_name {
+  name   = var.project_name
   family = "postgres13"
 
   parameter {
@@ -58,8 +58,8 @@ resource "aws_db_parameter_group" $project_name {
   }
 }
 
-resource "aws_db_instance" $project_name {
-  identifier             = $project_name
+resource "aws_db_instance" var.project_name {
+  identifier             = var.project_name
   instance_class         = "db.t3.micro"
   allocated_storage      = 5
   engine                 = "postgres"
