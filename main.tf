@@ -48,7 +48,7 @@ resource "aws_security_group" "rds" {
   }
 }
 
-resource "aws_db_parameter_group" var.project_name {
+resource "aws_db_parameter_group" "var.project_name" {
   name   = var.project_name
   family = "postgres13"
 
@@ -58,7 +58,7 @@ resource "aws_db_parameter_group" var.project_name {
   }
 }
 
-resource "aws_db_instance" var.project_name {
+resource "aws_db_instance" "var.project_name" {
   identifier             = var.project_name
   instance_class         = "db.t3.micro"
   allocated_storage      = 5
