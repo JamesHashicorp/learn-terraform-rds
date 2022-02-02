@@ -50,7 +50,7 @@ resource "aws_security_group" "rds" {
 
 resource "aws_db_parameter_group" "db_parameters" {
   name   = var.project_name
-  family = "MySQL8.0"
+  family = "postgres13"
 
   parameter {
     name  = "log_connections"
@@ -62,8 +62,8 @@ resource "aws_db_instance" "db_instance" {
   identifier             = var.project_name
   instance_class         = "db.t3.small"
   allocated_storage      = 5
-  engine                 = var.engine
-  engine_version         = "8.0.27"
+  engine                 = "postgres"
+  engine_version         = "13.1"
   username               = "edu"
   password               = var.db_password
   db_subnet_group_name   = aws_db_subnet_group.rds_subnet.name
