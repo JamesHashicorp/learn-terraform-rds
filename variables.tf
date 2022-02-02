@@ -12,3 +12,8 @@ variable "project_name" {
   default     = "project1"
   description = "This name with be given to the RDS instance"
 }
+
+variable "engine" {
+  default     = "postgres"
+  description = "Engine type of RDS instance"
+}

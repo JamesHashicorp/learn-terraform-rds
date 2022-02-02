@@ -62,7 +62,7 @@ resource "aws_db_instance" "db_instance" {
   identifier             = var.project_name
   instance_class         = "db.t3.small"
   allocated_storage      = 5
-  engine                 = "postgres"
+  engine                 = var.engine
   engine_version         = "13.1"
   username               = "edu"
   password               = var.db_password
