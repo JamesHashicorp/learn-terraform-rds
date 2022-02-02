@@ -63,7 +63,7 @@ resource "aws_db_instance" "db_instance" {
   instance_class         = "db.t3.small"
   allocated_storage      = 5
   engine                 = var.engine
-  engine_version         = "13.1"
+  engine_version         = "8.0.27"
   username               = "edu"
   password               = var.db_password
   db_subnet_group_name   = aws_db_subnet_group.rds_subnet.name
