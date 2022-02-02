@@ -26,7 +26,7 @@ resource "aws_db_subnet_group" "rds_subnet" {
 }
 
 resource "aws_security_group" "rds" {
-  name   = "education_rds"
+  name   = var.project_name
   vpc_id = module.vpc.vpc_id
 
   ingress {
@@ -44,7 +44,7 @@ resource "aws_security_group" "rds" {
   }
 
   tags = {
-    Name = "education_rds"
+    Name = var.project_name
   }
 }
 
@@ -66,9 +66,9 @@ resource "aws_db_instance" "db_instance" {
   engine_version         = "13.1"
   username               = "edu"
   password               = var.db_password
-  db_subnet_group_name   = aws_db_subnet_group.education.name
+  db_subnet_group_name   = aws_db_subnet_group.rds_subnet.name
   vpc_security_group_ids = [aws_security_group.rds.id]
-  parameter_group_name   = aws_db_parameter_group.education.name
+  parameter_group_name   = aws_db_parameter_group.db_parameters.name
   publicly_accessible    = true
   skip_final_snapshot    = true
 }
