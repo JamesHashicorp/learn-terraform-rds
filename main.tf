@@ -16,7 +16,7 @@ module "vpc" {
   enable_dns_support   = true
 }
 
-resource "aws_db_subnet_group" "module.vpc.name" {
+resource "aws_db_subnet_group" "rds_subnet" {
   name       = var.project_name
   subnet_ids = module.vpc.public_subnets
 
@@ -48,7 +48,7 @@ resource "aws_security_group" "rds" {
   }
 }
 
-resource "aws_db_parameter_group" "module.vpc.name" {
+resource "aws_db_parameter_group" "db_parameters" {
   name   = var.project_name
   family = "postgres13"
 
@@ -58,7 +58,7 @@ resource "aws_db_parameter_group" "module.vpc.name" {
   }
 }
 
-resource "aws_db_instance" "module.vpc.name" {
+resource "aws_db_instance" "db_instance" {
   identifier             = var.project_name
   instance_class         = "db.t3.micro"
   allocated_storage      = 5
