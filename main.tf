@@ -60,7 +60,7 @@ resource "aws_db_parameter_group" "db_parameters" {
 
 resource "aws_db_instance" "db_instance" {
   identifier             = var.project_name
-  instance_class         = "db.t3.micro"
+  instance_class         = "db.t3.small"
   allocated_storage      = 5
   engine                 = "postgres"
   engine_version         = "13.1"
@@ -71,4 +71,5 @@ resource "aws_db_instance" "db_instance" {
   parameter_group_name   = aws_db_parameter_group.db_parameters.name
   publicly_accessible    = true
   skip_final_snapshot    = true
+  apply_immediately = true
 }
