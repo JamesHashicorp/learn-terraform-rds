@@ -60,10 +60,10 @@ resource "aws_db_parameter_group" "db_parameters" {
 
 resource "aws_db_instance" "db_instance" {
   identifier             = var.project_name
-  instance_class         = "db.t3.small"
+  instance_class         = "db.t3.micro"
   allocated_storage      = 5
   engine                 = "postgres"
-  engine_version         = "13.3"
+  engine_version         = var.engine_version
   username               = "edu"
   password               = var.db_password
   db_subnet_group_name   = aws_db_subnet_group.rds_subnet.name
