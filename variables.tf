@@ -13,7 +13,7 @@ variable "project_name" {
   description = "This name with be given to the RDS instance"
 }
 
-variable "engine" {
-  default     = "postgres"
+variable "engine_version" {
+  default     = "13.1"
   description = "Engine type of RDS instance"
 }
