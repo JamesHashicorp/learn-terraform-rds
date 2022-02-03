@@ -2,7 +2,7 @@ all: cli deploy
 .PHONY: all doormat_creds doormat_aws deploy destroy console cli
 ACCOUNT = se_demos_dev
 ORGANIZATION = JamesHashicorp
-WORKSPACE = PROD-rds-secretcustomer
+WORKSPACE = rds-workspace-7
 check_creds = $(shell doormat --smoke-test 1>&2 2>/dev/null; echo $$?)
 doormat_creds:
 ifneq ($(check_creds), 0)
