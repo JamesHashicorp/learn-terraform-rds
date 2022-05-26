@@ -14,6 +14,6 @@ variable "project_name" {
 }
 
 variable "engine_version" {
-  default     = "13.1"
+  default     = "13.2"
   description = "Engine type of RDS instance"
 }
