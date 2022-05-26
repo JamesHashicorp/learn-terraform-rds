@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 data "aws_availability_zones" "available" {}
-//
+//changes to infra
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "2.77.0"
