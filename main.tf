@@ -25,7 +25,7 @@ resource "aws_db_subnet_group" "rds_subnet" {
   }
 }
 
-##   change made 
+##   change made here 
 resource "aws_security_group" "rds" {
   name   = var.project_name
   vpc_id = module.vpc.vpc_id
